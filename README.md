@@ -31,25 +31,29 @@ The main differences between these two types of finite automata is that in DFA t
 + In order to make things clear, this project will be made with a *DFA* perspective because there is only one unique way or road to take in order to achieve the correct formation of the alphabet's letters to produce the desired words.
 
 # Models
-## Automaton model - The chosen one
+## Automaton Model - The chosen one
 I generated a single automata that is valid for the five words of the language. It is important to mention that this automaton only accepts the following finite alphabet:
 **Σ =** {a, e, h, k, l, m, n, r, t, u, v, y, -}
 Any other letter, symbol or character that is not included in the finite alphabet or in the automaton transitions will not be accepted. 
 *The following diagram represents the automaton I designed for this first evidence:*
 ![alt text](Evidence1.png)
 The automaton that I generated allowed us to recognize each given word individually. Including the fact that the actual automaton was not generated to accept sequences where one word is followed by another, so it only generates the words ["kala", "karama", "kaveh", "kaymun", "ketman"].
-## Regular expression
+## Regular Expression
 When we talk about "Regular expressions" or 'regex', these are patterns used to match character combinations in strings. Regular expressions are composed of simple characters or a combination of simple and special characters such as '/abc/', '/ab*c/' or '/Chapter (\d+)\.\d*/'. In some cases, these patterns includes parentheses, which means that it is used as a memory device and a part of the pattern is remembered for later use. 
 To represent in another way the generated automaton, we can represent it in a regular expression form. In this case, as I mentioned previously in the automaton model, I will use only the letters included in the finite alphabet and the same criteria for accepting or rejecting a string. 
 *The regular expression or 'regex' generated for this evidence is the following one:*
 (^k)((ala) | (arama) | (aveh) | (aymun) | (etman))
-### Regular expression breakdown
+### Regular Expression Breakdown
 - **(^k):** The string must initiate with the letter 'k'.
     - **((ala) | (arama) | (aveh) | (aymun) | (etman)):** After the letter 'k', there are two possible paths to follow, which are the following:
     - *If after the letter 'k' continues a letter 'a', you should take any of the following roads:*
-        - *ala:* Only used if after the "ka" comes a letter 'l'. In that case, the word must be finished with an 'a', forming the word *'kala'*.
-        - *arama:* Only used if after the "ka" comes a 'r'. In that case, the word must be finished with the letters ['a', 'm', 'a'], forming the word *"karama"*.
-        - *aveh:* Only used if after the "ka" comes a letter 'v'. In that case, the word must be finished with the letters ['e', 'h'], forming the word *"aveh"*.
-        - *aymun:* Only used if after the "ka" comes a 'y'. In that case, the word must be finished with the letters ['m', 'u', 'n'], forming the word *"aymun"*.
+        - ***ala:*** Only used if after the "ka" comes a letter 'l'. In that case, the word must be finished with an 'a', forming the word *'kala'*.
+        - ***arama:*** Only used if after the "ka" comes a 'r'. In that case, the word must be finished with the letters ['a', 'm', 'a'], forming the word *"karama"*.
+        - ***aveh:*** Only used if after the "ka" comes a letter 'v'. In that case, the word must be finished with the letters ['e', 'h'], forming the word *"aveh"*.
+        - ***aymun:*** Only used if after the "ka" comes a 'y'. In that case, the word must be finished with the letters ['m', 'u', 'n'], forming the word *"aymun"*.
     - *While, if after the letter "k" comes a letter 'e', there's only one way to proceed and it is...*
-        - *etman:* It only integrates the letters ['t', 'm', 'a', 'n'] after the "ke", that the program previosly saved, forming the word *"ketman"*.
+        - ***etman:*** It only integrates the letters ['t', 'm', 'a', 'n'] after the "ke", that the program previosly saved, forming the word *"ketman"*.
+
+# Analysis
+## Time and Space Complexity
+Thanks that the program uses recursion and is constantly iterating over the knowledge base, it could be assimilated to a loop. Also, the base case of the recursion is completed when it identifies that the program list is empty and no additional operations are performed. Taking into account everything said before, the program is considered to have a time complexity of O(n) and it is an efficient solution because there's no nested loop and, no matter how many facts there are in the knowledge base, it will always iterate over each of them once. Just to conclude, it is important to mention that the space complexity of the program is O(n), since it stores 'n' elements on the stack as it scrolls through the list.
