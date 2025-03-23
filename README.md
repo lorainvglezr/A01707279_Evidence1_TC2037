@@ -36,7 +36,7 @@ Continuing with relevant information about the finite automaton, there are two d
 
 The main differences between these two types of finite automata is that in DFA the only move to make is to a specific state with a letter (think about k and that it can only take you from q0 to q1), whereas with NFA there's planty of possible moves you can take, since it can move to more than one state using one letter (think about k and it could take you from q0 to q1 or q0 to q2 or q0 back to q0). Just to conclude this informative section about automata, it is relevant to mention that the NFA will take null values as inputs (GeeksforGeeks, 2024).
 
-+ In order to make things clear, this project will be made with a *DFA* perspective because there is only one unique way or road to take in order to achieve the correct formation of the alphabet's letters to produce the desired words (GeeksforGeeks, 2024).
++ In order to make things clear, this project will be made with a *DFA* perspective because there is only one unique way or road to take in order to achieve the correct formation of the alphabet's letters to produce the desired words.
 
 
 
