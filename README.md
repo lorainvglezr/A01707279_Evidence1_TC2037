@@ -1,6 +1,6 @@
 # Evidence 1
-## Implementation of Lexical Analysis (Automaton and Regular Expression)
-### Lorain Valeria Gonzalez Rivas, A01707279
+### Implementation of Lexical Analysis (Automaton and Regular Expression)
+#### Lorain Valeria Gonzalez Rivas, A01707279
 
 
 # Description
@@ -30,6 +30,7 @@ Continuing with relevant information about the finite automaton, there are two d
 2. **Non-deterministic Finite Automata *(NFA)*:** Allows multiple transitions for the same input symbol and accepts empty transitions.
 The main differences between these two types of finite automata is that in DFA the only move to make is to a specific state with a letter (think about k and that it can only take you from q0 to q1), whereas with NFA there's planty of possible moves you can take, since it can move to more than one state using one letter (think about k and it could take you from q0 to q1 or q0 to q2 or q0 back to q0). Just to conclude this informative section about automata, it is relevant to mention that the NFA will take null values as inputs.
 + In order to make things clear, this project will be made with a *DFA* perspective because there is only one unique way or road to take in order to achieve the correct formation of the alphabet's letters to produce the desired words.
+
 
 # Models
 ## Automaton Model - The chosen one
@@ -61,17 +62,48 @@ To represent in another way the generated automaton, we can represent it in a re
     - *While, if after the letter "k" comes a letter 'e', there's only one way to proceed and it is...*
         - ***etman:*** It only integrates the letters ['t', 'm', 'a', 'n'] after the "ke", that the program previosly saved, forming the word *"ketman"*.
 
+
 # Implementation
 I used automata to create a knowledge base with states in Prolog, thus in order to implement my lexical analysis. The knowledge base has such elements as initial state, next step in the transtition and the symbol that corresponds to that movement fro one state to another. *To model this I made the next function:*
-`displace(Initial_state, Next_step, Word_letter)`
-I also added an additional rule that represents the accepting state and in my program there is only one unique accepting or final state and it is represented as:
-`final_state(qf)`
-The rest of the code has an auxiliar rule that calls to the recursive rule that will scroll all the elements through the list. This is represented in the program as:
-`journey_automaton(Term):-`
-The base case, the responsible of checking and verify the words and if it ends in an accepted state, is implemented in te code as:
-`correction_agent([], Initial_state):-`
-Finally, the function in charge of continue while the list contains elements, the recursive rule, is implemented in the code as:
-`correction_agent([Word_letter | Word_tail], Initial_state):-`
+```displace(Initial_state, Next_step, Word_letter)`
+
+I also added an additional rule that represents the accepting state and in my program there is only one unique accepting or final state and *it is represented as*:
+```final_state(qf)`
+
+The rest of the code has an auxiliar rule that calls to the recursive rule that will scroll all the elements through the list. *This is represented in the program as*:
+```journey_automaton(Term):-`
+
+The base case, the responsible of checking and verify the words and if it ends in an accepted state, *is implemented in te code as*:
+```correction_agent([], Initial_state):-`
+
+Finally, the function in charge of continue while the list contains elements, the recursive rule, *is implemented in the code as*:
+```correction_agent([Word_letter | Word_tail], Initial_state):-`
+
+
+# Test
+This program is implemented in ***Prolog***. In order to execute the automata, it is necessary that you open the file named "evidence1.pl" in a *Prolog-compatible* environment or in a *Prolog* terminal.
+## Successful Test Cases
+The following list is composed of the words that should be accepted by the automata, since they are specifically defined in the program and they will get as a return a `true`:
+1. kala
+2. karama
+3. kaveh
+4. kaymun
+5. ketman
+## Failed Test Cases
+However, the following list is composed of random words that should not be accepted by the automata, since they are specifically defined in the program to return a `false` because they are not part of the given words implemented for this evidence:
+1. kasa
+2. kebab
+3. kale
+4. kangaroo
+5. kesha
+Some other extreme test cases in which the return value is not `true` are:
+- When the user put in the terminal a word, just the word, that is not included in the list of the test cases.
+    - *Example:* The user put the word `Hello` and the output will be `procedure 'Hello' does not exist`.
+- When the user is trying to execute a new word, he is using the function to start the automata and write it in the correct format, but the word is not included in the list of the test cases.
+    - *Example:* The user put `journey_automaton([h, e, l, l, o]).` and the output will be `false` because it is making an accepted process, but the word doesn't have a define path on the program. 
+- When the user write in the terminal one of the words that are part of the given list for this evidence, but that word is beggining with a capital letter. The program just accept the words when all the characters are lower case. 
+    - *Example:* The user put the word `Ketman` and the output will be `Sandbox restriction! Could not derive which predicate may be called fromSearch space too large`. 
+
 
 # Analysis
 ## Time and Space Complexity
